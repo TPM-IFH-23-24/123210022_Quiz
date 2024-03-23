@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kuis_tpm_123210022/data/game_store.dart';
+import "package:url_launcher/url_launcher_string.dart";
 
 const dune = Color.fromARGB(255, 51, 51, 51);
 const lightGrey = Color.fromARGB(255, 217, 217, 217);
@@ -155,7 +156,23 @@ class GameDetailPage extends StatelessWidget {
           Text(
             gameItem.about,
             style: const TextStyle(fontSize: 12, color: dune),
-          )
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              launchUrlString(gameItem.linkStore);
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.blue[700],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            child: const Text("Go to Store", style: TextStyle(fontSize: 8)),
+          ),
         ],
       ),
     ));
